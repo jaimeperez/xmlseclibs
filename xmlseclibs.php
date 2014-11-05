@@ -793,7 +793,7 @@ class XMLSecurityDSig {
             return C14NGeneral($node, $exclusive, $withComments);
         }
         $element = $node;
-        if ($node->isSameNode($node->ownerDocument->documentElement)) {
+        if ($node instanceof DOMNode && $node->documentElement !== NULL && $node->isSameNode($node->ownerDocument->documentElement)) {
             $element = $node->ownerDocument;
         }
         return $element->C14N($exclusive, $withComments, $arXPath, $prefixList);
